@@ -1,4 +1,4 @@
-n = 6
+n = int(input())
 #k = 0
 left = n/2
 right = n*3 - n/2
