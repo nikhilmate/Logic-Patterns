@@ -12,28 +12,32 @@ def compute(n, k):
     for m in el:
         tempCompute = []
         finalResult = 0
-        for i in range(0, len(n) - 1):
+        for i in range(0, len(n)):
+#             print("i",i)
             changeCount = 0
             length = 0
-            for j in range(i+1, len(n)):
-                if changeCount <= k:
-                    if n[j] == m:
-                        length += 1
+            for j in range(i, len(n)):
+#                 print("j",j)
+                if n[j] == m:
+                    length += 1
+                else:
+                    if changeCount + 1 > k:
+                        break
                     else:
                         length += 1
                         changeCount += 1
-                else:
-                    changeCount = 0
-                    break
+#                 print("j length", length, changeCount)
+#             print("i length", length)
             tempCompute.append(length)
         finalResult = findMax(tempCompute)
         arr.append(finalResult)
+#         print(finalResult)
         
     result = findMax(arr)
     return result
 
-n = 'aabaacaaaabbbbabbb'
+n = 'aabaacaaccacccc'
 n = [x for x in n]
 print(n)
-k = 1
+k = 2
 print(compute(n, k))
